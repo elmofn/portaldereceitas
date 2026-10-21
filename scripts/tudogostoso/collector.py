@@ -277,7 +277,7 @@ class Collector:
                 url = trusted_url(link)
             except ValueError:
                 continue
-            if re.search(r'/receita/\d+[^/]*\.html$', parse.urlsplit(url).path):
+            if re.search(r'/receita/\d+[^/]*\.html$', parse.urlsplit(url).path) and suitable_title(parse.unquote(parse.urlsplit(url).path).replace('-', ' ')):
                 urls.add(url)
         selected, rejected = [], []
         for url in sorted(urls)[:30]:
