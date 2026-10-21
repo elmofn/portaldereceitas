@@ -44,10 +44,15 @@ class CollectorTests(unittest.TestCase):
             collector.allowed = True
             with self.assertRaises(ValueError): collector.fetch('https://www.tudogostoso.com.br/receita/123-teste.html')
 
+    def test_main_content_excludes_navigation(self):
+        parser=module.PageParser()
+        parser.feed('<nav><a href="/receita/1.html">N</a></nav><main><a href="/receita/2.html">M</a></main>')
+        self.assertEqual(parser.content_links,['/receita/2.html'])
+
     def test_initial_meal_focus(self):
         for title in ['Arroz integral com legumes', 'Sopa de lentilha', 'Frango assado', 'Carne de panela']:
             self.assertTrue(module.suitable_title(title))
-        for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão']:
+        for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão','Frango com catupiri','Torta cremosa de frango','Panqueca de banana']:
             self.assertFalse(module.suitable_title(title))
 
     def test_metadata_report_is_not_truncated(self):
@@ -57,6 +62,8 @@ class CollectorTests(unittest.TestCase):
         decoded=zlib.decompress(base64.b64decode(''.join(chunk['data'] for chunk in chunks)))
         self.assertEqual(json.loads(decoded),value)
         self.assertFalse(module.suitable_ingredients(['100 g de presunto']))
+        self.assertFalse(module.suitable_ingredients(['1 tablete de caldo']))
+        self.assertFalse(module.suitable_ingredients(['200g de toucinho']))
         self.assertTrue(module.suitable_ingredients(['arroz integral','frango','cenoura']))
 
     def test_robots_wildcards_and_allow_precedence(self):

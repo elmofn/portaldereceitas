@@ -44,14 +44,19 @@ class SafeRedirect(request.HTTPRedirectHandler):
 class PageParser(HTMLParser):
     def __init__(self):
         super().__init__()
-        self.links, self.blocks = [], []
+        self.links, self.content_links, self.blocks = [], [], []
+        self.in_main = False
         self.capture = False
         self.buffer = []
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'main':
+            self.in_main = True
         if tag == 'a' and attrs.get('href'):
             self.links.append(attrs['href'])
+            if self.in_main:
+                self.content_links.append(attrs['href'])
         if tag == 'script' and attrs.get('type', '').lower() == 'application/ld+json':
             self.capture, self.buffer = True, []
 
@@ -60,6 +65,8 @@ class PageParser(HTMLParser):
             self.buffer.append(data)
 
     def handle_endtag(self, tag):
+        if tag == 'main':
+            self.in_main = False
         if tag == 'script' and self.capture:
             self.blocks.append(''.join(self.buffer))
             self.capture = False
@@ -143,14 +150,14 @@ def candidate(recipe, url, body):
 
 def suitable_title(title):
     text = title.lower()
-    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]|passarinho|parmegiana|fricass[eê]|strogonoff|estrogonofe|catupiry|nugget|empanad', text):
+    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]|passarinho|parmegiana|fricass[eê]|strogonoff|estrogonofe|catupir[iy]|nugget|empanad|torta|banana', text):
         return False
     return bool(re.search(r'arroz|feijão|feijao|lentilha|frango|carne|sopa|caldo|legum|abobrinha|abóbora|abobora|moranga|berinjela|peixe|escondidinho|purê|pure|grão.de.bico|panqueca|picadinho|ensopado|almôndega|almondega|baião|baiao', text))
 
 
 def suitable_ingredients(ingredients):
     text = ''.join(c for c in unicodedata.normalize('NFD', ' '.join(ingredients).lower()) if unicodedata.category(c) != 'Mn')
-    return not re.search(r'presunto|bacon|linguica|salsicha|calabresa|mortadela|leite condensado|achocolatado', text)
+    return not re.search(r'presunto|bacon|linguica|salsicha|calabresa|mortadela|leite condensado|achocolatado|toucinho|batata palha|catupir[iy]|creme de cebola|tablete|cubinh|maionese|margarina|requeijao|caldo de galinha|caldo de frango', text)
 
 
 def metadata_chunks(result):
@@ -273,8 +280,9 @@ class Collector:
         for rank, category in enumerate(sorted(set(category_links), key=lambda url: (0 if 'saudavel' in url else 1 if 'sopas' in url else 2 if 'aves' in url else 3, url))[:4]):
             parser = PageParser()
             parser.feed(self.fetch(category))
-            links.extend(parser.links)
-            for link in parser.links:
+            category_recipes = parser.content_links or parser.links
+            links.extend(category_recipes)
+            for link in category_recipes:
                 try:
                     url = trusted_url(link)
                     priorities[url] = min(priorities.get(url, rank), rank)
