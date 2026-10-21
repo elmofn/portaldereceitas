@@ -5,6 +5,7 @@ import hashlib
 import html
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 import sys
@@ -187,10 +188,14 @@ class Collector:
         parser = PageParser()
         parser.feed(home)
         terms = sorted({parse.urljoin(BASE, link) for link in parser.links if re.search(r'termos|terms|condicoes|legais', link, re.I)})
-        report = {'source': BASE, 'termsLinksToReview': terms, 'recipesCollected': 0,
+        report = {'source': BASE, 'termsLinksToReview': terms, 'robotsText': text, 'recipesCollected': 0,
                   'note': 'Inspeção de acesso. Robots não concede direito de republicar textos ou imagens.'}
         (self.output / 'inspection.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
-        print(json.dumps(report, ensure_ascii=False))
+        message = json.dumps(report, ensure_ascii=False)
+        print(message)
+        if os.environ.get('GITHUB_ACTIONS') == 'true':
+            escaped = message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+            print(f'::notice title=Inspeção TudoGostoso::{escaped}')
         return parser.links
 
     def collect(self, policy, limit):
@@ -259,6 +264,9 @@ def main():
             print(f'{args.limit} candidatas salvas para revisão. Nenhuma alteração no portal ou download de fotos.')
     except (ValueError, RuntimeError, OSError) as exc:
         print(f'BLOQUEADO: {exc}', file=sys.stderr)
+        if os.environ.get('GITHUB_ACTIONS') == 'true':
+            message = str(exc).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+            print(f'::error title=Consulta bloqueada::{message}')
         return 1
     return 0
 
