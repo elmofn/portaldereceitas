@@ -1,0 +1,420 @@
+{
+  "targetCount": 12,
+  "collectedCount": 8,
+  "complete": false,
+  "recipes": [
+    {
+      "id": "84d892bb59c1cf73",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/4947-frango-com-quiabo-mineiro.html",
+        "authors": [
+          "Julia Dornelas Carbonel Ribeiro"
+        ],
+        "retrievedAt": "2026-10-21T20:58:12Z",
+        "pageSha256": "f74d276a05d829bc58e8935805897e49ddc0fbe7636887bca851b5c6c1a47598"
+      },
+      "title": "Frango com quiabo mineiro",
+      "ingredients": [
+        "1 quilo de quiabo",
+        "1 frango inteiro, cortado em pedaços",
+        "5 dentes de alho amassados",
+        "1 cebola grande bem pitadinha",
+        "1 xícara (chá) de óleo",
+        "1 colher (sobremesa) de colorau",
+        "pimenta a gosto",
+        "sal a gosto",
+        "cheiro verde a gosto"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT1H",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/a72c40c7c8c612c87edbdb60f9850c2d/68312-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "2612276d3bf9e17f",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/897-frango-xadrez.html",
+        "authors": [
+          "Priscila Santana"
+        ],
+        "retrievedAt": "2026-10-21T20:58:17Z",
+        "pageSha256": "ac4b4943efacb28425c0cc305e806905f7617c5bf6804aa0d736393aae3b5f97"
+      },
+      "title": "Frango xadrez",
+      "ingredients": [
+        "2 colheres (sopa) de azeite de oliva",
+        "2 cebolas médias cortadas em cubos",
+        "2 dentes de alho esmagados",
+        "500 g de filé de frango sem pele e cortado em cubos",
+        "sal a gosto",
+        "1 pimentão verde cortado em cubos",
+        "1 pimentão vermelho cortado em cubos",
+        "1 pimentão amarelo cortado em cubos",
+        "1 xícara (chá) de cogumelos em conserva cortados ao meio",
+        "1/4 xícara de molho shoyu",
+        "1 colher (sopa) de maisena",
+        "1/2 xícara (chá) de água",
+        "2 colheres (sopa) de amendoim torrado"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT40M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/8785ec793599557587d51a0b7483eb0a/344249-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "097caec189edfea7",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/1438-carne-de-panela-de-pressao.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T20:58:23Z",
+        "pageSha256": "376f3574194a27dbc2b0462eb33676def3d7f9ef84755265fea1587cd2f41f41"
+      },
+      "title": "Carne de panela de pressão",
+      "ingredients": [
+        "1 kg de carne (acém, patinho ou lombo de porco)",
+        "8 cebolas grandes cortadas em rodelas",
+        "3 ou 4 cubos de caldo de carne"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "5 porções",
+      "totalTimeOriginal": "PT25M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/1e0349bd474a7e36dbafe6f1269d927e/55785-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "9c4deb47cced6943",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/54191-carne-de-panela-com-batata.html",
+        "authors": [
+          "andreia brunhani"
+        ],
+        "retrievedAt": "2026-10-21T20:58:35Z",
+        "pageSha256": "430f11cff3f87e1afeb66182eb82c7d0b619c7557b35699e0000cbe8fb21052e"
+      },
+      "title": "Carne de panela com batata",
+      "ingredients": [
+        "1 kg de carne de acém cortada em cubos grandes",
+        "2 colheres (sopa) de óleo de milho",
+        "2 colheres (sopa) de cebola granulada",
+        "2 cubos de caldo natural",
+        "colorau a gosto",
+        "cheiro-verde desidratado a gosto",
+        "água (até cobrir a carne)",
+        "5 batatas médias descascadas e cortadas ao meio"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT45M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/c407e4c991104ce6f9f7c4eea7b7bd79/315980-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "d12b8acdd03777aa",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/64879-almondegas.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T20:58:39Z",
+        "pageSha256": "6cc337f14cde73ada15a194cda08dcc633a7347db76407b9721c3917d50ba5f5"
+      },
+      "title": "Almôndegas",
+      "ingredients": [
+        "500 g de carne moída",
+        "2 colheres (sopa) de azeite de oliva (30 ml)",
+        "1 xícara de cebola bem picada (60 g)",
+        "1 ovo",
+        "150 g de farinha de rosca",
+        "sal a gosto",
+        "pimenta-do-reino a gosto",
+        "395 g de molho de tomate"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "4 porções",
+      "totalTimeOriginal": "PT1H",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/64c44424862fd2c90989167ff9bd42b2/324166-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "8600e5db8e562125",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/66573-carne-assada-na-panela-de-pressao.html",
+        "authors": [
+          "Ana Paula Cavalcanti Amaral"
+        ],
+        "retrievedAt": "2026-10-21T20:58:41Z",
+        "pageSha256": "3201c81e542a4fcf1848ee34a043024c337233e8a30cd6a5f5a72f8d5cc30a2d"
+      },
+      "title": "Carne assada na panela de pressão",
+      "ingredients": [
+        "1 kg de miolo de acém",
+        "2 folhas de louro",
+        "2 colheres (sopa) de vinagre",
+        "1 cebola picadinha",
+        "4 dentes de alho",
+        "5 colheres (sopa) de shoyu",
+        "cominho a gosto",
+        "pimenta branca a gosto",
+        "sal a gosto",
+        "noz-moscada a gosto",
+        "1 colher (sopa) de óleo"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT1H30M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/452c64f68d3d0708c0d5df9b3c74e3d5/365952-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "4db05ce65deefc0a",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/113143-massa-de-panqueca-simples.html",
+        "authors": [
+          "yara"
+        ],
+        "retrievedAt": "2026-10-21T20:58:44Z",
+        "pageSha256": "00d1032e9dd5b5424fcf7d7059af9e360ab2757167703779eceb8970152b34ff"
+      },
+      "title": "Massa de panqueca simples",
+      "ingredients": [
+        "1 ovo",
+        "1 xícara de farinha de trigo",
+        "1 xícara de leite",
+        "1 pitada de sal",
+        "1 colher (sopa) de óleo"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "8 porções",
+      "totalTimeOriginal": "PT15M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/0da121b6813a8fc226097d3230af3db0/253560-shutterstock-1663492732.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "f36970f0b021e517",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/13110-panqueca-americana.html",
+        "authors": [
+          "Priscila"
+        ],
+        "retrievedAt": "2026-10-21T20:58:53Z",
+        "pageSha256": "b1323173423fc2fa83af7de4b6c1a45f6126a9de17215a6085540a9b856ec279"
+      },
+      "title": "Panqueca americana",
+      "ingredients": [
+        "1 e 1/4 xícara (chá) de farinha de trigo",
+        "1 colher (sopa) de açúcar",
+        "3 colheres (chá) de fermento em pó",
+        "2 ovos levemente batidos",
+        "1 xícara (chá) de leite",
+        "2 colheres (sopa) de manteiga derretida",
+        "pitada de sal",
+        "óleo"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "8 porções",
+      "totalTimeOriginal": "PT40M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/34e48b244df56bb8c516375eb418ed45/panqueca-americana.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "url": "https://www.tudogostoso.com.br/receita/105464-caldo-verde.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/15665-sopa-de-legumes-com-macarrao.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/247-sopa-de-feijao.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/7187-sopa-de-cebola.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/9031-caldo-verde.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/961-feijao-tropeiro.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/116-gratinado-de-frango.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/1278-frango-cremoso.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/129926-frango-assado-com-creme-de-cebola-e-maionese.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/148084-risoto-de-frango-simples.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/157888-coxa-e-sobrecoxa-de-frango-assado-no-forno.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/162495-frango-desfiado-na-panela-de-pressao.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/21372-file-de-frango-a-milanesa.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/6303-frango-assado-inteiro-e-descomplicado.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/91302-frango-ao-creme-de-milho.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/1598-rocambole-de-carne-moida-maravilhoso.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/179538-hamburguer-bovino-caseiro-gluten-free-sem-sopa-de-cebola.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/20768-escondidinho-de-carne-seca.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/1154-baiao-de-dois.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/125788-salpicao-de-frango-simples.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/133817-moqueca-de-peixe-facil.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/14485-sopa-de-ervilha.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    }
+  ],
+  "published": false,
+  "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39674714947"
+}

@@ -150,14 +150,14 @@ def candidate(recipe, url, body):
 
 def suitable_title(title):
     text = title.lower()
-    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]|passarinho|parmegiana|fricass[eê]|strogonoff|estrogonofe|catupir[iy]|nugget|empanad|torta|banana', text):
+    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]|passarinho|parmegiana|fricass[eê]|strogonoff|estrogonofe|catupir[iy]|nugget|empanad|torta|banana|panqueca americana|massa de panqueca|massa para panqueca', text):
         return False
-    return bool(re.search(r'arroz|feijão|feijao|lentilha|frango|carne|sopa|caldo|legum|abobrinha|abóbora|abobora|moranga|berinjela|peixe|escondidinho|purê|pure|grão.de.bico|panqueca|picadinho|ensopado|almôndega|almondega|baião|baiao', text))
+    return bool(re.search(r'arroz|feijão|feijao|lentilha|frango|carne|sopa|caldo|legum|abobrinha|abóbora|abobora|moranga|berinjela|peixe|escondidinho|purê|pure|grão.de.bico|panqueca|picadinho|ensopado|almôndega|almondega|baião|baiao|brócolis|brocolis|couve|cenoura|vagem|ervilha|espinafre|salmão|salmao|tilápia|tilapia|merluza|polenta', text))
 
 
 def suitable_ingredients(ingredients):
     text = ''.join(c for c in unicodedata.normalize('NFD', ' '.join(ingredients).lower()) if unicodedata.category(c) != 'Mn')
-    return not re.search(r'presunto|bacon|linguica|salsicha|calabresa|mortadela|leite condensado|achocolatado|toucinho|batata palha|catupir[iy]|creme de cebola|tablete|cubinh|maionese|margarina|requeijao|caldo de galinha|caldo de frango', text)
+    return not re.search(r'presunto|bacon|linguica|salsicha|calabresa|mortadela|leite condensado|achocolatado|toucinho|batata palha|catupir[iy]|creme de cebola|tablete|cubinh|maionese|margarina|requeijao|caldo de galinha|caldo de frango|cubos?.*caldo', text)
 
 
 def metadata_chunks(result):
@@ -290,6 +290,8 @@ class Collector:
                     continue
         cached = {}
         cache_file = self.output / 'candidates.json'
+        if not cache_file.exists():
+            cache_file = Path('data/tudogostoso/candidates.json')
         if cache_file.exists():
             try:
                 cached = {item['source']['url']: item for item in json.loads(cache_file.read_text(encoding='utf-8')).get('recipes', [])}
@@ -312,7 +314,7 @@ class Collector:
             if re.search(r'/receita/\d+[^/]*\.html$', parse.urlsplit(url).path) and suitable_title(parse.unquote(parse.urlsplit(url).path).replace('-', ' ')):
                 urls.add(url)
         selected, rejected = [], []
-        for url in sorted(urls, key=lambda value: (priorities.get(value, 99), value))[:30]:
+        for url in sorted(urls, key=lambda value: (priorities.get(value, 99), value))[:60]:
             if len(selected) >= limit:
                 break
             previous = cached.get(url)

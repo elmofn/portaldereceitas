@@ -52,7 +52,7 @@ class CollectorTests(unittest.TestCase):
     def test_initial_meal_focus(self):
         for title in ['Arroz integral com legumes', 'Sopa de lentilha', 'Frango assado', 'Carne de panela']:
             self.assertTrue(module.suitable_title(title))
-        for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão','Frango com catupiri','Torta cremosa de frango','Panqueca de banana']:
+        for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão','Frango com catupiri','Torta cremosa de frango','Panqueca de banana','Massa de panqueca simples','Panqueca americana']:
             self.assertFalse(module.suitable_title(title))
 
     def test_metadata_report_is_not_truncated(self):
