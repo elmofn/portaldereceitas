@@ -13,5 +13,11 @@
   "collection": {
     "mode": "metadata-only",
     "requestedByUser": true
+  },
+  "publication": {
+    "approved": false,
+    "photos": "pending",
+    "textReuse": "pending",
+    "userDecisionDate": "2026-10-21"
   }
 }

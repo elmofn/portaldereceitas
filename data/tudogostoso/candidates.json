@@ -1,7 +1,7 @@
 {
   "targetCount": 12,
-  "collectedCount": 8,
-  "complete": false,
+  "collectedCount": 12,
+  "complete": true,
   "recipes": [
     {
       "id": "84d892bb59c1cf73",
@@ -11,8 +11,8 @@
         "authors": [
           "Julia Dornelas Carbonel Ribeiro"
         ],
-        "retrievedAt": "2026-10-21T20:58:12Z",
-        "pageSha256": "f74d276a05d829bc58e8935805897e49ddc0fbe7636887bca851b5c6c1a47598"
+        "retrievedAt": "2026-10-21T21:01:42Z",
+        "pageSha256": "540dafcc6dd824bef4ecbda07a4889d86da7bcb66a15d8100c93d62354727c6f"
       },
       "title": "Frango com quiabo mineiro",
       "ingredients": [
@@ -36,13 +36,18 @@
       },
       "review": {
         "culinaryApproved": false,
-        "textReuseEvidence": null
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
       },
       "freezing": {
         "status": "unknown",
         "evidence": null,
         "days": null
-      }
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
     },
     {
       "id": "2612276d3bf9e17f",
@@ -52,8 +57,8 @@
         "authors": [
           "Priscila Santana"
         ],
-        "retrievedAt": "2026-10-21T20:58:17Z",
-        "pageSha256": "ac4b4943efacb28425c0cc305e806905f7617c5bf6804aa0d736393aae3b5f97"
+        "retrievedAt": "2026-10-21T21:01:48Z",
+        "pageSha256": "ddae2ecbcd660a21ecbc78ccc623e2f8ffd8372159842d52a71c995932895e08"
       },
       "title": "Frango xadrez",
       "ingredients": [
@@ -81,88 +86,18 @@
       },
       "review": {
         "culinaryApproved": false,
-        "textReuseEvidence": null
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
       },
       "freezing": {
         "status": "unknown",
         "evidence": null,
         "days": null
-      }
-    },
-    {
-      "id": "097caec189edfea7",
-      "source": {
-        "publisher": "TudoGostoso",
-        "url": "https://www.tudogostoso.com.br/receita/1438-carne-de-panela-de-pressao.html",
-        "authors": [
-          "TudoGostoso"
-        ],
-        "retrievedAt": "2026-10-21T20:58:23Z",
-        "pageSha256": "376f3574194a27dbc2b0462eb33676def3d7f9ef84755265fea1587cd2f41f41"
       },
-      "title": "Carne de panela de pressão",
-      "ingredients": [
-        "1 kg de carne (acém, patinho ou lombo de porco)",
-        "8 cebolas grandes cortadas em rodelas",
-        "3 ou 4 cubos de caldo de carne"
-      ],
-      "hasInstructions": true,
-      "yieldOriginal": "5 porções",
-      "totalTimeOriginal": "PT25M",
-      "photo": {
-        "sourceUrl": "https://static.itdg.com.br/images/1200-675/1e0349bd474a7e36dbafe6f1269d927e/55785-original.jpg",
-        "rights": "pending",
-        "authorizationEvidence": null
-      },
-      "review": {
-        "culinaryApproved": false,
-        "textReuseEvidence": null
-      },
-      "freezing": {
-        "status": "unknown",
-        "evidence": null,
-        "days": null
-      }
-    },
-    {
-      "id": "9c4deb47cced6943",
-      "source": {
-        "publisher": "TudoGostoso",
-        "url": "https://www.tudogostoso.com.br/receita/54191-carne-de-panela-com-batata.html",
-        "authors": [
-          "andreia brunhani"
-        ],
-        "retrievedAt": "2026-10-21T20:58:35Z",
-        "pageSha256": "430f11cff3f87e1afeb66182eb82c7d0b619c7557b35699e0000cbe8fb21052e"
-      },
-      "title": "Carne de panela com batata",
-      "ingredients": [
-        "1 kg de carne de acém cortada em cubos grandes",
-        "2 colheres (sopa) de óleo de milho",
-        "2 colheres (sopa) de cebola granulada",
-        "2 cubos de caldo natural",
-        "colorau a gosto",
-        "cheiro-verde desidratado a gosto",
-        "água (até cobrir a carne)",
-        "5 batatas médias descascadas e cortadas ao meio"
-      ],
-      "hasInstructions": true,
-      "yieldOriginal": "6 porções",
-      "totalTimeOriginal": "PT45M",
-      "photo": {
-        "sourceUrl": "https://static.itdg.com.br/images/1200-675/c407e4c991104ce6f9f7c4eea7b7bd79/315980-original.jpg",
-        "rights": "pending",
-        "authorizationEvidence": null
-      },
-      "review": {
-        "culinaryApproved": false,
-        "textReuseEvidence": null
-      },
-      "freezing": {
-        "status": "unknown",
-        "evidence": null,
-        "days": null
-      }
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
     },
     {
       "id": "d12b8acdd03777aa",
@@ -172,8 +107,8 @@
         "authors": [
           "TudoGostoso"
         ],
-        "retrievedAt": "2026-10-21T20:58:39Z",
-        "pageSha256": "6cc337f14cde73ada15a194cda08dcc633a7347db76407b9721c3917d50ba5f5"
+        "retrievedAt": "2026-10-21T21:02:09Z",
+        "pageSha256": "072022035ff4b6e4ce11848b08c0d83093f8a15da1f5fd1e21d66a94ec1e35a1"
       },
       "title": "Almôndegas",
       "ingredients": [
@@ -196,13 +131,18 @@
       },
       "review": {
         "culinaryApproved": false,
-        "textReuseEvidence": null
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
       },
       "freezing": {
         "status": "unknown",
         "evidence": null,
         "days": null
-      }
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
     },
     {
       "id": "8600e5db8e562125",
@@ -212,8 +152,8 @@
         "authors": [
           "Ana Paula Cavalcanti Amaral"
         ],
-        "retrievedAt": "2026-10-21T20:58:41Z",
-        "pageSha256": "3201c81e542a4fcf1848ee34a043024c337233e8a30cd6a5f5a72f8d5cc30a2d"
+        "retrievedAt": "2026-10-21T21:02:12Z",
+        "pageSha256": "41f54c54797d1896d881aef3de96f314331b76f9cb7193d644766536ec5645f8"
       },
       "title": "Carne assada na panela de pressão",
       "ingredients": [
@@ -239,38 +179,134 @@
       },
       "review": {
         "culinaryApproved": false,
-        "textReuseEvidence": null
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
       },
       "freezing": {
         "status": "unknown",
         "evidence": null,
         "days": null
-      }
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
     },
     {
-      "id": "4db05ce65deefc0a",
+      "id": "f7961fb711c26378",
       "source": {
         "publisher": "TudoGostoso",
-        "url": "https://www.tudogostoso.com.br/receita/113143-massa-de-panqueca-simples.html",
+        "url": "https://www.tudogostoso.com.br/receita/300841-peito-de-frango-na-air-fryer.html",
         "authors": [
-          "yara"
+          "Thayná Costa"
         ],
-        "retrievedAt": "2026-10-21T20:58:44Z",
-        "pageSha256": "00d1032e9dd5b5424fcf7d7059af9e360ab2757167703779eceb8970152b34ff"
+        "retrievedAt": "2026-10-21T21:02:27Z",
+        "pageSha256": "75f89350230fb850fbb10f9d7ea93990c2de4027a0dbfcb2738df1d04ca317de"
       },
-      "title": "Massa de panqueca simples",
+      "title": "Peito de frango na Air fryer",
       "ingredients": [
-        "1 ovo",
-        "1 xícara de farinha de trigo",
-        "1 xícara de leite",
-        "1 pitada de sal",
-        "1 colher (sopa) de óleo"
+        "500 g peito de frango limpo em cubos",
+        "1/2 limão",
+        "Páprica defumada a gosto",
+        "Pimenta do reino, ou chilli em pó, a gosto",
+        "Sal a gosto"
       ],
       "hasInstructions": true,
-      "yieldOriginal": "8 porções",
-      "totalTimeOriginal": "PT15M",
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT25M",
       "photo": {
-        "sourceUrl": "https://static.itdg.com.br/images/1200-675/0da121b6813a8fc226097d3230af3db0/253560-shutterstock-1663492732.jpg",
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/70207330cd93d8a78ba48e74c7100f11/peito-de-frango-na-airfryer.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
+    },
+    {
+      "id": "d74e7e787fdf2049",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/320642-caldo-de-ossos-rico-em-colageno-e-cheio-de-sabor-para-comer-puro.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T21:02:36Z",
+        "pageSha256": "e6c31b46e3974d8d03bf568b755ea61918bf389b75687005195f50e02b5a0abc"
+      },
+      "title": "Caldo de ossos rico em colágeno e cheio de sabor para comer puro",
+      "ingredients": [
+        "1,5 kg de ossos de boi (incluindo tutano e articulações para mais colágeno)",
+        "2 litros de água",
+        "1 colher (sopa) de vinagre de maçã",
+        "1 cenoura",
+        "1 cebola",
+        "3 dentes de alho",
+        "1 talo de alho-poró",
+        "1 colher (sopa) de azeite",
+        "salsinha a gosto",
+        "tomilho a gosto",
+        "sal a gosto"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "6 porções",
+      "totalTimeOriginal": "PT3H",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/6e9725a222cac85233ba1906c187ad2c/caldo-de-ossos-rico-em-colageno.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Base de preparo",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados. O título e a alegação sobre colágeno são da fonte, não uma alegação validada pelo portal."
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
+    },
+    {
+      "id": "c78ebd740ec56f27",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/320693-missoshiru-a-tradicional-sopa-de-misso-japonesa-facil-de-fazer.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T21:02:39Z",
+        "pageSha256": "b5dd0473fcfbe34e66f37846ea716c9c834158c6261d24eb55dd3a437bb9da0a"
+      },
+      "title": "Missoshiru: a tradicional sopa de missô japonesa fácil de fazer",
+      "ingredients": [
+        "500 ml de água",
+        "1 colher (sopa) de hondashi (pó de dashi)",
+        "2 colheres de sopa de missô (pasta de soja fermentada)",
+        "tofu cortado em cubos pequenos a gosto",
+        "alga wakame seca (hidratada previamente em água) a gosto",
+        "cebolinha picada a gosto"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "2 porções",
+      "totalTimeOriginal": "PT25M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/5265381db61af2c5e0dc245aed39a900/missoshiru-a-tradicional-sopa-de-misso-japonesa-facil-de-fazer.jpg",
         "rights": "pending",
         "authorizationEvidence": null
       },
@@ -285,32 +321,223 @@
       }
     },
     {
-      "id": "f36970f0b021e517",
+      "id": "31a426e32728fecc",
       "source": {
         "publisher": "TudoGostoso",
-        "url": "https://www.tudogostoso.com.br/receita/13110-panqueca-americana.html",
+        "url": "https://www.tudogostoso.com.br/receita/320704-chop-suey-de-frango-picadinho-oriental-com-vegetais-crocantes-e-molho-encorpado.html",
         "authors": [
-          "Priscila"
+          "TudoGostoso"
         ],
-        "retrievedAt": "2026-10-21T20:58:53Z",
-        "pageSha256": "b1323173423fc2fa83af7de4b6c1a45f6126a9de17215a6085540a9b856ec279"
+        "retrievedAt": "2026-10-21T21:02:42Z",
+        "pageSha256": "616a2b302779afdebd2d2aaea7259af38282c33117ab7628b3705256db172baa"
       },
-      "title": "Panqueca americana",
+      "title": "Chop Suey de frango: picadinho oriental com vegetais crocantes e molho encorpado",
       "ingredients": [
-        "1 e 1/4 xícara (chá) de farinha de trigo",
-        "1 colher (sopa) de açúcar",
-        "3 colheres (chá) de fermento em pó",
-        "2 ovos levemente batidos",
-        "1 xícara (chá) de leite",
-        "2 colheres (sopa) de manteiga derretida",
-        "pitada de sal",
-        "óleo"
+        "500 g de peito de frango em cubos",
+        "200 g de cogumelos fatiados",
+        "1 cenoura cortada em tiras finas",
+        "1 pimentão vermelho cortado em tiras",
+        "1 xícara (chá) de brócolis",
+        "2 xícaras (chá) de repolho picado",
+        "1 cebola cortada em fatias grossas",
+        "1 xícara (chá) de brotos de feijão",
+        "2 dentes de alho picados",
+        "1 colher (chá) de gengibre ralado",
+        "2 colheres (sopa) de óleo de gergelim torrado",
+        "1/2 xícara de shoyu",
+        "1/2 xícara de água",
+        "1 colher (sopa) de óleo de gergelim torrado",
+        "1 colher (chá) de açúcar",
+        "1 colher (sopa) cheia de amido de milho"
       ],
       "hasInstructions": true,
-      "yieldOriginal": "8 porções",
-      "totalTimeOriginal": "PT40M",
+      "yieldOriginal": "3 porções",
+      "totalTimeOriginal": "PT20M",
       "photo": {
-        "sourceUrl": "https://static.itdg.com.br/images/1200-675/34e48b244df56bb8c516375eb418ed45/panqueca-americana.jpg",
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/a85bdc9e97960e6ae44b0229dd57644e/chop-suey-de-frango.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null,
+        "editorialStatus": "preselected",
+        "metadataChecked": true,
+        "intendedUse": "Refeição",
+        "note": "Pré-seleção por ingredientes e finalidade. Preparo completo, adequação nutricional, direitos e congelamento ainda não aprovados."
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      },
+      "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
+    },
+    {
+      "id": "754c91cac35d4b15",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/320728-rolinho-primavera-com-massa-crocante-fininha-e-recheio-de-legumes.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T21:02:45Z",
+        "pageSha256": "5b90f26d0981c198240300c0ba4f239ff00737c78727c4aa3288ea191847bda8"
+      },
+      "title": "Rolinho primavera com massa crocante fininha e recheio de legumes",
+      "ingredients": [
+        "2 xícaras (chá) de farinha de trigo",
+        "1 colher (chá) de sal",
+        "340 ml de água em temperatura ambiente",
+        "1 fio de óleo vegetal",
+        "óleo para fritar",
+        "4 dentes de alho picados",
+        "1 cebola picada",
+        "2 cenouras picadas em tiras finas",
+        "1 colher (chá) de gengibre ralado",
+        "1/2 pimentão cortado em tiras finas",
+        "1/2 repolho verde fatiado",
+        "2 colheres (sopa) de molho shoyu",
+        "sal a gosto",
+        "pimenta-do-reino a gosto",
+        "1 xícara (chá) de cebolinha picada",
+        "óleo de gergelim para refogar",
+        "2 colheres (sopa) de farinha de trigo",
+        "água o suficiente para dar o ponto"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "12 porções",
+      "totalTimeOriginal": "PT1H",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/0f98fb42c56e3f418fb4430b6ff5c8c2/rolinho-primavera-com-massa-crocante-fininha-e-recheio-de-legumes.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "4b08ef134362a34e",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/320732-doritos-de-arroz-muito-crocante-e-saboroso-perfeito-para-aproveitar-as-sobras.html",
+        "authors": [
+          "TudoGostoso"
+        ],
+        "retrievedAt": "2026-10-21T21:02:48Z",
+        "pageSha256": "283cf62a2d8d5f6f8b2c1ca9d9a6faab709f2603cb811ee8858483afe53664b2"
+      },
+      "title": "Doritos de arroz muito crocante e saboroso perfeito para aproveitar as sobras",
+      "ingredients": [
+        "1 xícara (chá) bem cheia de arroz cozido",
+        "300 ml de água",
+        "1 e 1/2 colher (sopa) de azeite",
+        "1 colher (chá) de páprica defumada",
+        "1/2 colher (chá) de colorau",
+        "1 colher (chá) de alho em pó",
+        "sal a gosto",
+        "1 colher (chá) de fermento em pó químico",
+        "1 colher (sopa) de lemon pepper",
+        "1 colher (sopa) de páprica defumada",
+        "1 colher (sopa) de salsa desidratada",
+        "2 colheres (sopa) de queijo parmesão ralado",
+        "sal a gosto"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "32 porções",
+      "totalTimeOriginal": "PT20M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/8b8870062045ffcceada2c94f4e927bf/doritos-de-arroz-muito-crocante-e-saboroso-perfeito-para-aproveitar-as-sobras.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "f7f085f34f398242",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/4224-bolinho-de-arroz.html",
+        "authors": [
+          "Tania Cione"
+        ],
+        "retrievedAt": "2026-10-21T21:02:54Z",
+        "pageSha256": "2e735f335bf17dabe4c495cfffb6411a245b1ba10c9405f7a972664b3c38c3ee"
+      },
+      "title": "Bolinho de arroz",
+      "ingredients": [
+        "2 xícaras (chá) de arroz cozido",
+        "1/2 xícara (chá) de queijo ralado",
+        "1/2 xícara (chá) de leite",
+        "2 colheres (sopa) de cheiro-verde picado",
+        "1 colher (sopa) de fermento em pó",
+        "1/2 xícara (chá) de amido de milho",
+        "1/2 xícara (chá) de farinha de trigo",
+        "1 ovo",
+        "óleo para fritar"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "30 porções",
+      "totalTimeOriginal": "PT30M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/49dc1a832774c48f9935c335508861c4/320105-original.jpg",
+        "rights": "pending",
+        "authorizationEvidence": null
+      },
+      "review": {
+        "culinaryApproved": false,
+        "textReuseEvidence": null
+      },
+      "freezing": {
+        "status": "unknown",
+        "evidence": null,
+        "days": null
+      }
+    },
+    {
+      "id": "28ccfcf52eb3e54f",
+      "source": {
+        "publisher": "TudoGostoso",
+        "url": "https://www.tudogostoso.com.br/receita/54909-delicioso-ceviche-de-tilapia.html",
+        "authors": [
+          "Plinio Guazzone"
+        ],
+        "retrievedAt": "2026-10-21T21:02:57Z",
+        "pageSha256": "c169c90f1a6c21cb8408b0107ef1bb939d84904daaf7242f4362e1c9dc7b7371"
+      },
+      "title": "Delicioso ceviche de tilápia",
+      "ingredients": [
+        "4 filés de tilápia, cortados em cubos médios",
+        "Suco de 3 limões",
+        "1/4 colher de chá de pasta de alho",
+        "3 gotas de molho de pimenta",
+        "2 tomates maduros, cortados em cubos médios",
+        "1/2 cebola branca, cortada em cubos médios",
+        "2 e 1/2 colheres (sopa) de coentro fresco",
+        "Sal",
+        "Pimenta-do-reino",
+        "Salsinha e cebolinha desidratada"
+      ],
+      "hasInstructions": true,
+      "yieldOriginal": "4 porções",
+      "totalTimeOriginal": "PT3H5M",
+      "photo": {
+        "sourceUrl": "https://static.itdg.com.br/images/1200-675/19f4c150f336168f1562d2514d672b1e/325125-original-1-.jpeg",
         "rights": "pending",
         "authorizationEvidence": null
       },
@@ -387,6 +614,10 @@
       "reason": "Fora do foco inicial de refeições salgadas"
     },
     {
+      "url": "https://www.tudogostoso.com.br/receita/1438-carne-de-panela-de-pressao.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
       "url": "https://www.tudogostoso.com.br/receita/1598-rocambole-de-carne-moida-maravilhoso.html",
       "reason": "Fora do foco inicial de refeições salgadas"
     },
@@ -396,6 +627,10 @@
     },
     {
       "url": "https://www.tudogostoso.com.br/receita/20768-escondidinho-de-carne-seca.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/54191-carne-de-panela-com-batata.html",
       "reason": "Fora do foco inicial de refeições salgadas"
     },
     {
@@ -413,8 +648,20 @@
     {
       "url": "https://www.tudogostoso.com.br/receita/14485-sopa-de-ervilha.html",
       "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/319890-palitos-de-frango-crocante.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/320620-sopa-de-legumes-com-carne-desfiada-receita-encorpada-sem-usar-farinha.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
+    },
+    {
+      "url": "https://www.tudogostoso.com.br/receita/320758-bolinho-de-batata-na-airfryer-com-recheio-de-frango-saudavel-saboroso-e-ainda-pode-congelar.html",
+      "reason": "Fora do foco inicial de refeições salgadas"
     }
   ],
   "published": false,
-  "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39674714947"
+  "collectionRun": "https://github.com/elmofn/portaldereceitas/actions/runs/39675196315"
 }

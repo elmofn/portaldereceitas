@@ -63,3 +63,7 @@ Envie a `main` e configure **Settings → Pages → Source → GitHub Actions**.
 Endereço: `https://elmofn.github.io/portaldereceitas/`.
 
 Fontes locais Lora e DM Sans com licenças OFL em `public/fonts`. O compartilhamento nativo de arquivos depende do aparelho/navegador; nos demais casos, o PDF é baixado para anexar ao WhatsApp.
+
+## Piloto de coleta TudoGostoso
+
+O workflow manual **Revisar lote TudoGostoso** inspeciona acesso e coleta metadados públicos com robots, limites e cache. O piloto de dez candidatas está em [data/tudogostoso/SELECAO.md](data/tudogostoso/SELECAO.md), fora do catálogo do portal. Por decisão do usuário, fotos permanecem pendentes de autorização. Não há republicação de fotografias nem transcrição integral de preparo. Revisão culinária, direitos e congelamento são condições separadas antes de publicar.

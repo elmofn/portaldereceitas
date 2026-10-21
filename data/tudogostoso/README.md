@@ -35,3 +35,7 @@ Para cada receita selecionada, verifique:
 A coleta local ficou bloqueada pela lista de domínios do ambiente em 21/10/2026. `www.tudogostoso.com.br` e `tudogostoso.com.br` foram solicitados nas configurações do ambiente. A inspeção no GitHub Actions conseguiu consultar robots e a página inicial. Nenhum link de termos foi encontrado nela. Essa ausência não implica licença para republicação. Se o site negar acesso em qualquer etapa, a execução deve parar.
 
 O arquivo `candidates.json` pode conter um lote parcial ou itens ainda não aprovados. Confira `complete`, `collectedCount` e os campos de revisão; presença nesse arquivo não indica publicação ou aprovação.
+
+## Pré-seleção registrada
+
+A coleta automática encontrou 12 candidatas. Após triagem, `review.json` registra dez candidatas (sete preparações e bases da coleta mais recente, mais sopa de feijão e duas panquecas de uma coleta anterior). O total respeita a faixa de 10 a 15 solicitada. Veja `SELECAO.md`. Fotos, preparo completo, direitos e congelamento seguem pendentes; o lote não foi ligado ao catálogo público.
