@@ -2,6 +2,7 @@
 """Coleta limitada para revisão, sem atualizar o catálogo ou baixar fotografias."""
 import argparse
 import hashlib
+from datetime import datetime, timezone
 import html
 from html.parser import HTMLParser
 import json
@@ -137,6 +138,13 @@ def candidate(recipe, url, body):
     }
 
 
+def suitable_title(title):
+    text = title.lower()
+    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]', text):
+        return False
+    return bool(re.search(r'arroz|feijão|feijao|lentilha|frango|carne|sopa|caldo|legum|abobrinha|abóbora|abobora|moranga|berinjela|peixe|escondidinho|purê|pure|grão.de.bico|panqueca|picadinho|ensopado|almôndega|almondega|baião|baiao', text))
+
+
 class RobotsRules(robotparser.RobotFileParser):
     """Robot parser with wildcard/end-anchor support and longest-match precedence."""
     def can_fetch(self, useragent, url):
@@ -222,7 +230,7 @@ class Collector:
         parser = PageParser()
         parser.feed(home)
         terms = sorted({parse.urljoin(BASE, link) for link in parser.links if re.search(r'termos|terms|condicoes|legais', link, re.I)})
-        report = {'source': BASE, 'termsLinksToReview': terms, 'robotsText': text, 'recipesCollected': 0,
+        report = {'source': BASE, 'termsLinksToReview': terms, 'categoryLinks': sorted({parse.urljoin(BASE, link) for link in parser.links if '/categorias/' in link}), 'robotsText': text, 'recipesCollected': 0,
                   'note': 'Inspeção de acesso. Robots não concede direito de republicar textos ou imagens.'}
         (self.output / 'inspection.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
         message = json.dumps(report, ensure_ascii=False)
@@ -237,6 +245,24 @@ class Collector:
         if collection.get('mode') != 'metadata-only' or collection.get('requestedByUser') is not True:
             raise ValueError('Esta etapa só admite coleta de metadados públicos para curadoria solicitada pelo usuário, sem publicação ou download de fotos.')
         links = self.inspect()
+        category_links = []
+        for link in links:
+            if '/categorias/' in link and re.search(r'saudavel|legumes|sopas|aves|carnes|saladas', link, re.I):
+                try:
+                    category_links.append(trusted_url(link))
+                except ValueError:
+                    continue
+        for category in sorted(set(category_links), key=lambda url: (not bool(re.search(r'saudavel|legumes|sopas', url)), url))[:4]:
+            parser = PageParser()
+            parser.feed(self.fetch(category))
+            links.extend(parser.links)
+        cached = {}
+        cache_file = self.output / 'candidates.json'
+        if cache_file.exists():
+            try:
+                cached = {item['source']['url']: item for item in json.loads(cache_file.read_text(encoding='utf-8')).get('recipes', [])}
+            except (ValueError, KeyError, TypeError):
+                cached = {}
         for seed in policy.get('seeds', []):
             seed = trusted_url(seed)
             if seed != BASE:
@@ -257,6 +283,15 @@ class Collector:
         for url in sorted(urls)[:30]:
             if len(selected) >= limit:
                 break
+            previous = cached.get(url)
+            if previous:
+                try:
+                    age = (datetime.now(timezone.utc) - datetime.fromisoformat(previous['source']['retrievedAt'].replace('Z', '+00:00'))).total_seconds()
+                    if 0 <= age < 86400 and suitable_title(previous['title']):
+                        selected.append(previous)
+                        continue
+                except (ValueError, KeyError, TypeError):
+                    pass
             body = self.fetch(url)
             extracted = recipes_from_html(body)
             if len(extracted) != 1:
@@ -264,7 +299,7 @@ class Collector:
                 continue
             try:
                 item = candidate(extracted[0], url, body)
-                if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink', item['title'], re.I):
+                if not suitable_title(item['title']):
                     rejected.append({'url': url, 'reason': 'Fora do foco inicial de refeições salgadas'})
                     continue
                 selected.append(item)
@@ -274,9 +309,8 @@ class Collector:
                   'recipes': selected, 'rejected': rejected, 'published': False}
         (self.output / 'candidates.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
         if os.environ.get('GITHUB_ACTIONS') == 'true':
-            for item in selected:
-                escaped = json.dumps(item, ensure_ascii=False).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
-                print(f'::notice title=Candidata para revisão::{escaped}')
+            escaped = json.dumps(result, ensure_ascii=False).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+            print(f'::notice title=Lote de metadados para revisão::{escaped}')
         if len(selected) != limit:
             raise ValueError(f'Lote incompleto: {len(selected)} de {limit}. Adicione páginas de origem reais às seeds; nenhuma receita será inventada.')
         return result

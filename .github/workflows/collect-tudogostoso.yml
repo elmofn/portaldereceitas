@@ -24,6 +24,11 @@ jobs:
           python-version: '3.12'
       - name: Testar coletor
         run: python -m unittest discover -s tests/tudogostoso -p 'test_*.py'
+      - uses: actions/cache@v4
+        with:
+          path: .local/tudogostoso/candidates.json
+          key: tudogostoso-metadata-v1-${{ github.run_id }}
+          restore-keys: tudogostoso-metadata-v1-
       - name: Inspecionar acesso
         if: inputs.mode == 'inspect'
         run: python scripts/tudogostoso/collector.py --mode inspect

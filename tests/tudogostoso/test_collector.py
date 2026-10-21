@@ -41,6 +41,12 @@ class CollectorTests(unittest.TestCase):
             collector.allowed = True
             with self.assertRaises(ValueError): collector.fetch('https://www.tudogostoso.com.br/receita/123-teste.html')
 
+    def test_initial_meal_focus(self):
+        for title in ['Arroz integral com legumes', 'Sopa de lentilha', 'Frango assado', 'Carne de panela']:
+            self.assertTrue(module.suitable_title(title))
+        for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão']:
+            self.assertFalse(module.suitable_title(title))
+
     def test_robots_wildcards_and_allow_precedence(self):
         rules = module.RobotsRules()
         rules.parse(['User-agent: *', 'Disallow: *recipe_id=*', 'Disallow: /busca', 'Disallow: /private/*', 'Allow: /private/public$', 'User-agent: SpecialBot', 'Disallow: /'])
