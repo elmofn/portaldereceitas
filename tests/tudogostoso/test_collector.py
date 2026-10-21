@@ -26,17 +26,28 @@ class CollectorTests(unittest.TestCase):
         result = module.candidate(data, 'https://www.tudogostoso.com.br/receita/123-teste.html', 'page')
         self.assertEqual(result['freezing']['status'], 'unknown')
         self.assertEqual(result['photo']['rights'], 'pending')
+        self.assertNotIn('instructions', result)
+        self.assertTrue(result['hasInstructions'])
         self.assertEqual(result['ingredients'], data['recipeIngredient'])
         for key in ['author','image','recipeIngredient','recipeInstructions']:
             invalid = {k:v for k,v in data.items() if k != key}
             with self.assertRaises(ValueError): module.candidate(invalid, result['source']['url'], 'page')
 
-    def test_collection_requires_terms_and_robots_denies_fetch(self):
+    def test_collection_scope_and_robots_denies_fetch(self):
         with tempfile.TemporaryDirectory() as folder:
             collector = module.Collector(folder)
             with self.assertRaises(ValueError): collector.collect({'terms':{'reviewed':False}},12)
             collector.robots.parse(['User-agent: *','Disallow: /receita/'])
             collector.allowed = True
             with self.assertRaises(ValueError): collector.fetch('https://www.tudogostoso.com.br/receita/123-teste.html')
+
+    def test_robots_wildcards_and_allow_precedence(self):
+        rules = module.RobotsRules()
+        rules.parse(['User-agent: *', 'Disallow: *recipe_id=*', 'Disallow: /busca', 'Disallow: /private/*', 'Allow: /private/public$', 'User-agent: SpecialBot', 'Disallow: /'])
+        self.assertFalse(rules.can_fetch(module.AGENT, module.BASE + '?recipe_id=123'))
+        self.assertFalse(rules.can_fetch(module.AGENT, module.BASE + 'private/secret'))
+        self.assertTrue(rules.can_fetch(module.AGENT, module.BASE + 'private/public'))
+        self.assertFalse(rules.can_fetch('SpecialBot', module.BASE))
+        self.assertTrue(rules.can_fetch(module.AGENT, module.BASE + 'receita/123-prato.html'))
 
 if __name__ == '__main__': unittest.main()

@@ -129,7 +129,7 @@ def candidate(recipe, url, body):
                    'retrievedAt': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
                    'pageSha256': hashlib.sha256(body.encode()).hexdigest()},
         'title': as_text(recipe['name']), 'ingredients': [as_text(item) for item in ingredients],
-        'instructions': steps, 'yieldOriginal': recipe.get('recipeYield'),
+        'hasInstructions': bool(steps), 'yieldOriginal': recipe.get('recipeYield'),
         'totalTimeOriginal': recipe.get('totalTime'),
         'photo': {'sourceUrl': image, 'rights': 'pending', 'authorizationEvidence': None},
         'review': {'culinaryApproved': False, 'textReuseEvidence': None},
@@ -137,12 +137,46 @@ def candidate(recipe, url, body):
     }
 
 
+class RobotsRules(robotparser.RobotFileParser):
+    """Robot parser with wildcard/end-anchor support and longest-match precedence."""
+    def can_fetch(self, useragent, url):
+        if self.disallow_all:
+            return False
+        if self.allow_all:
+            return True
+        if not self.last_checked:
+            return False
+        agent = useragent.lower().split('/')[0]
+        groups = [(len(ua), entry) for entry in self.entries for ua in entry.useragents if ua != '*' and ua.lower() in agent]
+        if groups:
+            longest = max(length for length, _ in groups)
+            selected = [entry for length, entry in groups if length == longest]
+        else:
+            selected = [self.default_entry] if self.default_entry else []
+        parsed = parse.urlsplit(url)
+        path = parse.unquote(parsed.path or '/') + ('?' + parsed.query if parsed.query else '')
+        matching = []
+        for entry in selected:
+            for rule in entry.rulelines:
+                pattern = parse.unquote(rule.path)
+                anchored = pattern.endswith('$')
+                if anchored:
+                    pattern = pattern[:-1]
+                regex = '^' + '.*'.join(re.escape(part) for part in pattern.split('*')) + ('$' if anchored else '')
+                if re.search(regex, path):
+                    matching.append((len(pattern.replace('*', '')), rule.allowance))
+        if not matching:
+            return True
+        longest = max(length for length, _ in matching)
+        return any(allowed for length, allowed in matching if length == longest)
+
+
 class Collector:
     def __init__(self, output, interval=3):
         self.output = Path(output)
         self.interval, self.last = max(3, interval), None
         self.opener = request.build_opener(SafeRedirect(self.check_redirect))
-        self.robots = robotparser.RobotFileParser()
+        self.robots = RobotsRules()
         self.allowed = False
 
     def check_redirect(self, url):
@@ -199,10 +233,9 @@ class Collector:
         return parser.links
 
     def collect(self, policy, limit):
-        terms = policy.get('terms', {})
-        if not (terms.get('reviewed') is True and terms.get('permitsCollection') is True
-                and terms.get('referenceUrl') and terms.get('reviewedAt')):
-            raise ValueError('Coleta pendente de revisão dos termos: registre referência, data e permissão de coleta em policy.json. Não presuma autorização.')
+        collection = policy.get('collection', {})
+        if collection.get('mode') != 'metadata-only' or collection.get('requestedByUser') is not True:
+            raise ValueError('Esta etapa só admite coleta de metadados públicos para curadoria solicitada pelo usuário, sem publicação ou download de fotos.')
         links = self.inspect()
         for seed in policy.get('seeds', []):
             seed = trusted_url(seed)
@@ -240,6 +273,10 @@ class Collector:
         result = {'targetCount': limit, 'collectedCount': len(selected), 'complete': len(selected) == limit,
                   'recipes': selected, 'rejected': rejected, 'published': False}
         (self.output / 'candidates.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
+        if os.environ.get('GITHUB_ACTIONS') == 'true':
+            for item in selected:
+                escaped = json.dumps(item, ensure_ascii=False).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+                print(f'::notice title=Candidata para revisão::{escaped}')
         if len(selected) != limit:
             raise ValueError(f'Lote incompleto: {len(selected)} de {limit}. Adicione páginas de origem reais às seeds; nenhuma receita será inventada.')
         return result
@@ -261,7 +298,7 @@ def main():
             print('Inspeção salva; termos e direitos continuam pendentes de revisão.')
         else:
             collector.collect(json.loads(Path(args.policy).read_text(encoding='utf-8')), args.limit)
-            print(f'{args.limit} candidatas salvas para revisão. Nenhuma alteração no portal ou download de fotos.')
+            print(f'{args.limit} fichas de metadados salvas para revisão. Sem transcrição do preparo, publicação no portal ou download de fotos.')
     except (ValueError, RuntimeError, OSError) as exc:
         print(f'BLOQUEADO: {exc}', file=sys.stderr)
         if os.environ.get('GITHUB_ACTIONS') == 'true':

@@ -1,11 +1,17 @@
 {
   "targetCount": 12,
-  "seeds": ["https://www.tudogostoso.com.br/"],
+  "seeds": [
+    "https://www.tudogostoso.com.br/"
+  ],
   "terms": {
     "reviewed": false,
     "permitsCollection": false,
     "referenceUrl": null,
     "reviewedAt": null,
-    "note": "Pendente: consulta direta bloqueada pela rede do ambiente. Robots não substitui termos de uso nem licença."
+    "note": "Inspeção de 21/10/2026 no GitHub Actions: robots acessível; nenhum link de termos identificado na página inicial. Apenas metadados públicos para curadoria; não implica direito de republicar receitas ou fotos."
+  },
+  "collection": {
+    "mode": "metadata-only",
+    "requestedByUser": true
   }
 }
