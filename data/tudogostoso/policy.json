@@ -1,0 +1,11 @@
+{
+  "targetCount": 12,
+  "seeds": ["https://www.tudogostoso.com.br/"],
+  "terms": {
+    "reviewed": false,
+    "permitsCollection": false,
+    "referenceUrl": null,
+    "reviewedAt": null,
+    "note": "Pendente: consulta direta bloqueada pela rede do ambiente. Robots não substitui termos de uso nem licença."
+  }
+}
