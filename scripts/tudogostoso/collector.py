@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Coleta limitada para revisão, sem atualizar o catálogo ou baixar fotografias."""
 import argparse
+import base64
 import hashlib
 from datetime import datetime, timezone
 import html
@@ -11,6 +12,8 @@ from pathlib import Path
 import re
 import sys
 import time
+import unicodedata
+import zlib
 from urllib import error, parse, request, robotparser
 
 AGENT = 'CarinhoNoPote/1.0'
@@ -140,9 +143,23 @@ def candidate(recipe, url, body):
 
 def suitable_title(title):
     text = title.lower()
-    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]', text):
+    if re.search(r'bolo|doce|sobremesa|brigadeiro|pudim|coquetel|drink|brownie|coxinha|pastel|churros|sorvete|iogurte|mocotó|mocoto|camarão|camarao|bobó|bobo|frit[ao]|passarinho|parmegiana|fricass[eê]|strogonoff|estrogonofe|catupiry|nugget|empanad', text):
         return False
     return bool(re.search(r'arroz|feijão|feijao|lentilha|frango|carne|sopa|caldo|legum|abobrinha|abóbora|abobora|moranga|berinjela|peixe|escondidinho|purê|pure|grão.de.bico|panqueca|picadinho|ensopado|almôndega|almondega|baião|baiao', text))
+
+
+def suitable_ingredients(ingredients):
+    text = ''.join(c for c in unicodedata.normalize('NFD', ' '.join(ingredients).lower()) if unicodedata.category(c) != 'Mn')
+    return not re.search(r'presunto|bacon|linguica|salsicha|calabresa|mortadela|leite condensado|achocolatado', text)
+
+
+def metadata_chunks(result):
+    raw = json.dumps(result, ensure_ascii=False).encode()
+    payload = base64.b64encode(zlib.compress(raw)).decode()
+    parts = [payload[i:i+2800] for i in range(0, len(payload), 2800)]
+    if len(parts) > 8:
+        raise ValueError('Relatório excede o limite de anotações; consulte o artefato original.')
+    return [{'part': i+1, 'total': len(parts), 'encoding': 'zlib+base64', 'sha256': hashlib.sha256(raw).hexdigest(), 'data': part} for i, part in enumerate(parts)]
 
 
 class RobotsRules(robotparser.RobotFileParser):
@@ -245,6 +262,7 @@ class Collector:
         if collection.get('mode') != 'metadata-only' or collection.get('requestedByUser') is not True:
             raise ValueError('Esta etapa só admite coleta de metadados públicos para curadoria solicitada pelo usuário, sem publicação ou download de fotos.')
         links = self.inspect()
+        priorities = {}
         category_links = []
         for link in links:
             if '/categorias/' in link and re.search(r'saudavel|legumes|sopas|aves|carnes|saladas', link, re.I):
@@ -252,10 +270,16 @@ class Collector:
                     category_links.append(trusted_url(link))
                 except ValueError:
                     continue
-        for category in sorted(set(category_links), key=lambda url: (not bool(re.search(r'saudavel|legumes|sopas', url)), url))[:4]:
+        for rank, category in enumerate(sorted(set(category_links), key=lambda url: (0 if 'saudavel' in url else 1 if 'sopas' in url else 2 if 'aves' in url else 3, url))[:4]):
             parser = PageParser()
             parser.feed(self.fetch(category))
             links.extend(parser.links)
+            for link in parser.links:
+                try:
+                    url = trusted_url(link)
+                    priorities[url] = min(priorities.get(url, rank), rank)
+                except ValueError:
+                    continue
         cached = {}
         cache_file = self.output / 'candidates.json'
         if cache_file.exists():
@@ -280,14 +304,14 @@ class Collector:
             if re.search(r'/receita/\d+[^/]*\.html$', parse.urlsplit(url).path) and suitable_title(parse.unquote(parse.urlsplit(url).path).replace('-', ' ')):
                 urls.add(url)
         selected, rejected = [], []
-        for url in sorted(urls)[:30]:
+        for url in sorted(urls, key=lambda value: (priorities.get(value, 99), value))[:30]:
             if len(selected) >= limit:
                 break
             previous = cached.get(url)
             if previous:
                 try:
                     age = (datetime.now(timezone.utc) - datetime.fromisoformat(previous['source']['retrievedAt'].replace('Z', '+00:00'))).total_seconds()
-                    if 0 <= age < 86400 and suitable_title(previous['title']):
+                    if 0 <= age < 86400 and suitable_title(previous['title']) and suitable_ingredients(previous['ingredients']):
                         selected.append(previous)
                         continue
                 except (ValueError, KeyError, TypeError):
@@ -299,7 +323,7 @@ class Collector:
                 continue
             try:
                 item = candidate(extracted[0], url, body)
-                if not suitable_title(item['title']):
+                if not suitable_title(item['title']) or not suitable_ingredients(item['ingredients']):
                     rejected.append({'url': url, 'reason': 'Fora do foco inicial de refeições salgadas'})
                     continue
                 selected.append(item)
@@ -309,8 +333,8 @@ class Collector:
                   'recipes': selected, 'rejected': rejected, 'published': False}
         (self.output / 'candidates.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
         if os.environ.get('GITHUB_ACTIONS') == 'true':
-            escaped = json.dumps(result, ensure_ascii=False).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
-            print(f'::notice title=Lote de metadados para revisão::{escaped}')
+            for chunk in metadata_chunks(result):
+                print(f"::notice title=Lote candidato {chunk['part']}/{chunk['total']}::{json.dumps(chunk)}")
         if len(selected) != limit:
             raise ValueError(f'Lote incompleto: {len(selected)} de {limit}. Adicione páginas de origem reais às seeds; nenhuma receita será inventada.')
         return result

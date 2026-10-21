@@ -1,4 +1,7 @@
 import importlib.util
+import base64
+import json
+import zlib
 import pathlib
 import tempfile
 import unittest
@@ -46,6 +49,15 @@ class CollectorTests(unittest.TestCase):
             self.assertTrue(module.suitable_title(title))
         for title in ['Brownie super fácil', 'Coxinha com batata', 'Iogurte caseiro', 'Bobó de camarão']:
             self.assertFalse(module.suitable_title(title))
+
+    def test_metadata_report_is_not_truncated(self):
+        value = {'recipes':[{'title':'Registro público ' + str(i),'ingredients':['Campo original']*10} for i in range(12)]}
+        chunks=module.metadata_chunks(value)
+        self.assertTrue(all(len(json.dumps(chunk))<4000 for chunk in chunks))
+        decoded=zlib.decompress(base64.b64decode(''.join(chunk['data'] for chunk in chunks)))
+        self.assertEqual(json.loads(decoded),value)
+        self.assertFalse(module.suitable_ingredients(['100 g de presunto']))
+        self.assertTrue(module.suitable_ingredients(['arroz integral','frango','cenoura']))
 
     def test_robots_wildcards_and_allow_precedence(self):
         rules = module.RobotsRules()
