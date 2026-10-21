@@ -12,9 +12,14 @@ npm run dev
 npm test
 npm run build
 npm run preview
+npm run test:e2e
 ```
 
 O conteúdo está em `src/recipes.js`; a geração de PDF, em `src/pdf.js`. O portal é estático e não precisa de servidor, banco de dados, conta de usuário ou chave de API. Fontes locais Lora e DM Sans (licenças OFL em `public/fonts`). Fotos ilustrativas via Unsplash, com ilustrações SVG locais como alternativa em caso de indisponibilidade. Os tempos de freezer são orientações de qualidade a −18 °C, não uma garantia independente das condições de manipulação.
+
+## Navegação
+
+A entrada mostra diretamente busca, filtros e receitas. O menu fixo abre Receitas, Como congelar e Sobre em telas separadas. Cada receita possui uma URL própria, por exemplo `?receita=frango`, com suporte a recarga e links compartilhados no GitHub Pages sem regras de redirecionamento. Busca e categoria são mantidas na URL e preservadas no link de retorno da receita.
 
 ## Publicação gratuita com GitHub Pages
 
@@ -28,4 +33,4 @@ O workflow faz instalação com lockfile, testes, build e deploy. Atualizações
 
 ## Validação realizada
 
-Testes Node: busca por ingrediente/acentos/categoria e geração de PDFs de todas as receitas. Navegador Chromium: busca, filtros, estado vazio, modal e fechamento por Escape, download real de PDF e ausência de overflow horizontal em larguras de 375, 390, 768 e 1440 pixels. O compartilhamento via WhatsApp depende do navegador/aplicativo do aparelho e não foi testado em um celular físico.
+Testes Node: busca por ingrediente/acentos/categoria e geração de PDFs de todas as receitas. Navegador Chromium: menu e páginas separadas, links diretos de receitas, recarga, histórico do navegador, busca/filtros preservados ao voltar, estado vazio, receita inexistente, download real de PDF e ausência de overflow horizontal em larguras de 375, 390, 768 e 1440 pixels. Validado também com arquivos estáticos no subdiretório `/portaldereceitas/`. Os testes estão em `e2e/navigation.spec.js`; execute `npm run build && npm run test:e2e`. O Chromium é encontrado em `/usr/bin/chromium`; em outra máquina, informe o executável com a variável `CHROMIUM_PATH`. O compartilhamento via WhatsApp depende do navegador/aplicativo do aparelho e não foi testado em um celular físico.
