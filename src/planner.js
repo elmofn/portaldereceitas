@@ -1,4 +1,4 @@
-import { recipes } from './recipes.js';
+import { recipes, retiredRecipeIds } from './recipes.js';
 export const PLAN_KEY = 'carinho-no-pote:cardapio:v1';
 export const days = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
 export const meals = ['Almoço', 'Jantar'];
@@ -31,9 +31,11 @@ export function summarizePlan(value) {
 }
 export function fillEmpty(value) {
  const plan = cleanPlan(value);
+ const eligible = recipes.filter(r => r.freezing.status === 'yes');
+ if (!eligible.length) return plan;
  for (let day = 0; day < 7; day++) for (let meal = 0; meal < 2; meal++) {
   const key = `${day}-${meal}`;
-  if (!plan[key]) plan[key] = { recipe: recipes[(day * 2 + meal) % recipes.length].id, portions: 1 };
+  if (!plan[key]) plan[key] = { recipe: eligible[(day * 2 + meal) % eligible.length].id, portions: 1 };
  }
  return plan;
 }
@@ -43,4 +45,8 @@ export function readPlans(storage) {
 }
 export function savePlans(storage, weeks) {
  try { storage.setItem(PLAN_KEY, JSON.stringify({ weeks })); return true; } catch { return false; }
+}
+
+export function retiredPlanEntries(weeks) {
+ return Object.values(weeks || {}).flatMap(plan => Object.values(plan || {})).filter(entry => retiredRecipeIds.includes(entry?.recipe)).length;
 }

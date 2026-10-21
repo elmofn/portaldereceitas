@@ -1,44 +1,65 @@
 # Carinho no Pote 🌿
 
-Portal em português de receitas caseiras para congelar, com ingredientes comuns em Porto Alegre. Layout responsivo, pesquisa por ingredientes sem distinção de acentos, filtros e seis receitas com PDF individual. Em celulares compatíveis, o PDF pode ser enviado pelo compartilhamento nativo; nos demais navegadores, é baixado para anexar ao WhatsApp.
+Portal estático em português com receitas de autoria identificada, páginas individuais, planejamento semanal, consulta de ingredientes e exportação em PDF. Hospedagem no GitHub Pages, sem banco de dados, chave de API ou custo de serviço externo.
 
 ## Desenvolvimento
 
-Node.js 24 e npm.
+Node.js 24.19 ou superior.
 
 ```sh
 npm ci
 npm run dev
 npm test
 npm run build
-npm run preview
 npm run test:e2e
+npm run sources:verify
+npm run preview
 ```
 
-O conteúdo está em `src/recipes.js`; a geração de PDF, em `src/pdf.js`. O portal é estático e não precisa de servidor, banco de dados, conta de usuário ou chave de API. Fontes locais Lora e DM Sans (licenças OFL em `public/fonts`). Fotos ilustrativas via Unsplash, com ilustrações SVG locais como alternativa em caso de indisponibilidade. Os tempos de freezer são orientações de qualidade a −18 °C, não uma garantia independente das condições de manipulação.
+Os testes de navegador usam Chromium em `/usr/bin/chromium`. Em outra máquina, indique o executável com `CHROMIUM_PATH`. `sources:verify` consulta referências externas por HTTPS, respeitando o proxy do ambiente e verificando hashes SHA-256 dos arquivos de origem fixados por commit. Essa conferência não atualiza dados automaticamente e não prova que uma página original permanece atual.
 
-## Navegação
+## Base de dados e proveniência
 
-A entrada mostra diretamente busca, filtros e receitas. O menu fixo abre Receitas, Como congelar e Sobre em telas separadas. Cada receita possui uma URL própria, por exemplo `?receita=frango`, com suporte a recarga e links compartilhados no GitHub Pages sem regras de redirecionamento. Busca e categoria são mantidas na URL e preservadas no link de retorno da receita.
+As seis receitas iniciais sem referências foram **retiradas**, assim como seus prazos de freezer. Seus IDs não foram reutilizados e URLs antigas mostram um aviso. O catálogo inicial atual tem quatro receitas: NHS Better Health (chilli e peixe com batatas), Panelinha (arroz sírio com frango) e MyPlate/USDA (salada de frango, arroz, aspargos e tangerina).
 
-## Cardápio semanal
+Não são receitas criadas pelo portal. Os ingredientes preservam quantidades e produtos; quando necessário, há tradução para português, mantendo unidades originais. O preparo é uma síntese da autoria com link obrigatório para as instruções completas. Não substituímos ingredientes para simular uma adaptação local. Fotos externas foram removidas; as imagens atuais são ilustrações locais.
 
-O menu **Minha semana** abre `?pagina=semana`. Cada semana começa na segunda-feira e possui almoço e jantar de segunda a domingo. Selecione uma receita, informe de 1 a 12 porções por refeição e navegue entre semanas. Também é possível incluir uma receita diretamente de sua página e preencher os espaços vazios automaticamente, preservando as escolhas existentes.
+**Limitação de acesso em 21/10/2026:** as páginas originais estavam bloqueadas pela rede deste ambiente. As referências foram consultadas indiretamente em cópias técnicas do projeto `hhursev/recipe-scrapers`, no commit `b49b0ff0f2f69970f9579d0c5d086892c335011c`. Não alegamos revalidação direta ou atual do conteúdo. Essa condição é mostrada no catálogo, na receita, nos PDFs e em **Fontes e critérios** (`?pagina=fontes`).
 
-Os planos ficam no `localStorage` deste navegador, separados por semana, sem conta ou sincronização entre aparelhos. Se o armazenamento estiver bloqueado, a interface avisa; o planejamento ainda funciona durante a sessão e pode ser salvo em PDF. Limpar uma semana exige confirmação e mantém as demais.
+A base de ingredientes usa uma seleção de registros de uma cópia histórica da tabela FoodKeeper, atribuída ao USDA/FSIS, disponível em `jelera/food-shelflife-db`, commit `a7bf41f2a07823039e9169b538f0c42a29336eb7`. Os registros originais e a proveniência são auditáveis. A edição atual do FoodKeeper não foi revalidada. A tabela trata de apresentações e qualidade de conservação; os resultados não são garantias de segurança sanitária.
 
-O PDF contém datas, refeições, porções planejadas, resumo do preparo e orientações de armazenamento. O resumo soma as porções por receita e indica quantos preparos completos são necessários. Ele não altera quantidades dos ingredientes; eventuais porções extras podem ser reservadas para outra semana.
+Arquivos:
 
-## Publicação gratuita com GitHub Pages
+- `src/data/recipe-snapshots.json`: campos de referência das receitas, sem transcrição integral do preparo.
+- `src/data/foodkeeper-snapshot.json`: registros selecionados com campos originais preservados.
+- `src/data/provenance.json`: URLs fixadas e hashes dos arquivos externos consultados.
+- `src/recipes.js`: seleção editorial, ingredientes e sínteses em português.
+- `src/ingredients.js`: aliases, apresentações e regras conservadoras.
+- `src/sources.js`: fontes, revisões e textos de classificação.
+- `scripts/verify-sources.mjs`: verifica a integridade e a correspondência dos dados locais com as referências versionadas.
 
-1. Envie os arquivos para a branch `main` de `elmofn/portaldereceitas`.
-2. Para GitHub Free, confirme que o repositório está público (Settings → General → Danger Zone → Change repository visibility). Essa ação torna todo o conteúdo do repositório público.
-3. Em Settings → Pages → Build and deployment → Source, selecione **GitHub Actions**.
-4. Acompanhe o workflow **Publicar portal** na aba Actions. Se ele já tiver executado antes de habilitar Pages, execute-o novamente por **Run workflow**.
-5. Depois do deploy bem-sucedido, o endereço esperado é `https://elmofn.github.io/portaldereceitas/`.
+Para ampliar o catálogo, consulte uma receita efetivamente publicada, registre autoria e URL canônica, preserve os ingredientes e o rendimento e adicione a referência auditável antes de publicar. Verifique separadamente a orientação de freezer. Uma nova versão de referência exige revisão explícita dos dados e dos hashes. Não use conteúdo sem autoria, receitas geradas ou prazos estimados.
 
-O workflow faz instalação com lockfile, testes, build e deploy. Atualizações enviadas a `main` são publicadas automaticamente. O caminho relativo do Vite permite servir o projeto no subdiretório do GitHub Pages. Não se deve afirmar que a URL está disponível antes de confirmar o deploy.
+## Congelamento
 
-## Validação realizada
+Existem quatro resultados: indicado pela fonte, não recomendado, depende do preparo e não verificado. A forma do produto importa: arroz cru não herda a regra de arroz cozido; ovo com casca, claras/gemas sem casca e ovo cozido têm regras distintas. Ingredientes não reconhecidos ou apresentações ausentes permanecem sem conclusão. Correspondências por nome não validam automaticamente um prato pronto.
 
-Testes Node: busca por ingrediente/acentos/categoria, geração de PDFs individuais e semanal, datas de início da semana, preservação de escolhas no preenchimento, sanitização de dados, armazenamento e resumo de porções. Navegador Chromium: menu e páginas separadas, links diretos de receitas, recarga, histórico do navegador, busca/filtros preservados ao voltar, estado vazio, receita inexistente, download real de PDF e ausência de overflow horizontal em larguras de 375, 390, 768 e 1440 pixels. Validado também com arquivos estáticos no subdiretório `/portaldereceitas/`. Os testes estão em `e2e/navigation.spec.js`; execute `npm run build && npm run test:e2e`. O Chromium é encontrado em `/usr/bin/chromium`; em outra máquina, informe o executável com a variável `CHROMIUM_PATH`. O compartilhamento via WhatsApp depende do navegador/aplicativo do aparelho e não foi testado em um celular físico.
+Uma única receita inicial, o chilli do NHS, possui indicação expressa de congelamento no trecho consultado. A fonte não informa prazo nem detalha o congelamento do arroz servido como acompanhamento; não atribuimos prazo. As três outras receitas têm congelamento não verificado. O preenchimento automático do planejador usa somente receitas com indicação expressa; portanto, atualmente repete o chilli. A pessoa pode planejar outros pratos para consumo sem presumir que possam ser congelados.
+
+## Cardápio e navegação
+
+A entrada mostra receitas, busca, categorias, filtro de congelamento e uma consulta expansível de ingredientes. O menu abre Minha semana, Receitas, Como congelar e Sobre. Há links para fontes em cada receita e no rodapé.
+
+Receitas possuem URLs próprias (`?receita=nhs-chilli`) compatíveis com recarga no GitHub Pages. Busca e filtros são preservados no retorno à lista.
+
+Em `?pagina=semana`, cada semana começa na segunda-feira, com almoço e jantar dos sete dias e 1 a 12 porções por refeição. Planos ficam no `localStorage`, separados por semana, sem sincronização entre aparelhos. Se o armazenamento falhar, a interface avisa e o PDF continua disponível. Limpar uma semana exige confirmação.
+
+Receitas retiradas do catálogo não são trocadas por outras silenciosamente. O plano antigo permanece armazenado até a edição da semana; essas escolhas aparecem vazias com aviso. PDFs e resumo do preparo mostram a classificação e a fonte de cada receita. Ingredientes não são redimensionados automaticamente.
+
+## Publicação gratuita
+
+Envie a `main` e configure **Settings → Pages → Source → GitHub Actions**. O workflow `Publicar portal` executa instalação com lockfile, testes, build e deploy de `dist`. Evite a origem por branch, que pode publicar o código-fonte em vez do build.
+
+Endereço: `https://elmofn.github.io/portaldereceitas/`.
+
+Fontes locais Lora e DM Sans com licenças OFL em `public/fonts`. O compartilhamento nativo de arquivos depende do aparelho/navegador; nos demais casos, o PDF é baixado para anexar ao WhatsApp.

@@ -1,5 +1,8 @@
 import { jsPDF } from 'jspdf';
 import { storage, recipes } from './recipes.js';
+import { freezerLabel, timeLabel } from './sources.js';
+import { ingredientGuidance } from './ingredients.js';
+import { statusLabels } from './sources.js';
 import { days, meals, cleanPlan, summarizePlan, dateAt } from './planner.js';
 export function createRecipePdf(recipe) {
  const doc=new jsPDF(); let y=22;
@@ -11,10 +14,19 @@ export function createRecipePdf(recipe) {
  };
  line('CARINHO NO POTE',12,'#56715a');
  doc.setFont('helvetica','bold');line(recipe.name,21);doc.setFont('helvetica','normal');
- line(`${recipe.time} min | ${recipe.portions} porções | Freezer: até ${recipe.freezer} dias`);
+ line(`${timeLabel(recipe)} | ${recipe.portions} porções | ${freezerLabel(recipe)}`);
+ line(`Fonte: ${recipe.source.publisher}`,12);
+ line(recipe.source.url,10);
+ line(`Título original: ${recipe.source.originalTitle}`,10);
+ line('Consulta indireta em cópia técnica versionada. Página original ainda não revalidada.',10);
+ line(recipe.source.snapshotUrl,9);
  line('Ingredientes',15);recipe.ingredients.forEach(i=>line('- '+i));
- line('Modo de preparo',15);recipe.steps.forEach((s,i)=>line(`${i+1}. ${s}`));
- line('Dica da cozinha',15);line(recipe.tip);
+ line('Modo de preparo - síntese da autoria',15);recipe.steps.forEach((s,i)=>line(`${i+1}. ${s}`));
+ line('Sobre esta transcrição',15);line(recipe.tip);
+ line('Congelamento da receita pronta',15);line(freezerLabel(recipe));line(recipe.freezing.note);
+ line('Prazo de freezer não informado na fonte consultada.');
+ line('Ingredientes reconhecidos',15);
+ recipe.ingredients.forEach(i=>{line(i);ingredientGuidance(i).forEach(result=>line(`${result.name}: ${statusLabels[result.status]}`,10));});
  line('Para congelar com cuidado',15);line(storage);
  line('Para aquecer',15);line(recipe.reheat);
  line('Comida de casa. Cuidado para a semana inteira.',10,'#56715a');
@@ -59,7 +71,10 @@ export function createWeeklyPdf(plan, start) {
  }
  line('Organize o preparo', 15);
  summary.preparation.forEach(({ recipe, portions, batches }) => line(`${recipe.name}: ${portions} porções planejadas. Prepare ${batches} receita(s) completa(s), com rendimento total de ${batches * recipe.portions} porções.`));
- line('As porções do cardápio indicam quantas serão consumidas. As quantidades dos ingredientes e os rendimentos das receitas originais não foram alterados. Reserve as porções extras para outra semana.');
+ line('As porções do cardápio indicam quantas serão consumidas. As quantidades dos ingredientes e os rendimentos das receitas originais não foram alterados. Não congele as porções extras sem confirmar a orientação específica da receita.');
+ line('Fontes e congelamento das receitas',15);
+ summary.preparation.forEach(({recipe})=>{line(recipe.name,13);line(freezerLabel(recipe));line(recipe.freezing.note);line(`Fonte: ${recipe.source.publisher}`,10);line(recipe.source.url,10);});
+ line('Receitas consultadas em cópias técnicas versionadas; páginas originais ainda não revalidadas. Não atribuímos prazos de freezer por analogia.',10);
  line('Para congelar com cuidado', 15); line(storage);
  line('Este cardápio organiza suas escolhas e não substitui orientação nutricional individual.', 10);
  return doc;

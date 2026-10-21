@@ -1,0 +1,35 @@
+{
+  "reviewedAt": "2026-10-21",
+  "originalPagesRevalidated": false,
+  "artifacts": [
+    {
+      "label": "nhshealthierfamilies_1",
+      "recipeKey": "nhshealthierfamilies_1",
+      "url": "https://raw.githubusercontent.com/hhursev/recipe-scrapers/b49b0ff0f2f69970f9579d0c5d086892c335011c/tests/test_data/nhs.uk/nhshealthierfamilies_1.json",
+      "sha256": "32ca68e53891ceb59ae47e4db7b399c9738037b63750c7f83028f4fec7eb77a7"
+    },
+    {
+      "label": "nhshealthierfamilies_2",
+      "recipeKey": "nhshealthierfamilies_2",
+      "url": "https://raw.githubusercontent.com/hhursev/recipe-scrapers/b49b0ff0f2f69970f9579d0c5d086892c335011c/tests/test_data/nhs.uk/nhshealthierfamilies_2.json",
+      "sha256": "c2730e619746679a3160b9af656fbb15ca82a88b9b63ca5ea549fb77f48f2520"
+    },
+    {
+      "label": "panelinha_2",
+      "recipeKey": "panelinha_2",
+      "url": "https://raw.githubusercontent.com/hhursev/recipe-scrapers/b49b0ff0f2f69970f9579d0c5d086892c335011c/tests/test_data/panelinha.com.br/panelinha_2.json",
+      "sha256": "a281c895713212cf22d26e912a10bc96b862fc5e6d48b0753c8bb7b34eaa50b6"
+    },
+    {
+      "label": "usdamyplate_2",
+      "recipeKey": "usdamyplate_2",
+      "url": "https://raw.githubusercontent.com/hhursev/recipe-scrapers/b49b0ff0f2f69970f9579d0c5d086892c335011c/tests/test_data/myplate.gov/usdamyplate_2.json",
+      "sha256": "3a64fe9e8b14bbf8ef98f2af978c8c933330eb13bae32dd1e023388a9429109d"
+    },
+    {
+      "label": "FoodKeeper (cópia histórica)",
+      "url": "https://raw.githubusercontent.com/jelera/food-shelflife-db/a7bf41f2a07823039e9169b538f0c42a29336eb7/lib/seeds/ingredients.csv",
+      "sha256": "5d686a38121ca6af2342fbbfcc97c3e95a6397f8be56871d8cf412bd4a44deac"
+    }
+  ]
+}

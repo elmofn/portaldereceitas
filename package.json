@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "node --test",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "sources:verify": "node --use-env-proxy scripts/verify-sources.mjs"
   },
   "dependencies": {
     "jspdf": "^3.0.4"

@@ -1,0 +1,98 @@
+{
+  "nhshealthierfamilies_1": {
+    "author": "NHS Better Health",
+    "canonical_url": "nhs.uk",
+    "site_name": "nhs.uk",
+    "host": "nhs.uk",
+    "language": "en",
+    "title": "Chilli con carne",
+    "ingredients": [
+      "300g extra-lean minced beef",
+      "1 large onion, finely chopped",
+      "2 garlic cloves, finely chopped",
+      "400g chopped tomatoes",
+      "2 tablespoons tomato purée",
+      "2 teaspoons chilli powder",
+      "1 teaspoon ground cumin",
+      "1 red pepper, deseeded and chopped",
+      "2 handfuls of cup or button mushrooms, sliced",
+      "410g red kidney beans, drained",
+      "150ml reduced-salt vegetable or chicken stock",
+      "300g easy-cook white or brown rice",
+      "1 pinch ground black pepper"
+    ],
+    "yields": "4 servings",
+    "description": "This classic chilli is packed with flavour. It also freezes well, so is perfect to batch-cook.",
+    "total_time": 35,
+    "prep_time": 10,
+    "cook_time": 25
+  },
+  "nhshealthierfamilies_2": {
+    "author": "NHS Better Health",
+    "canonical_url": "nhs.uk",
+    "site_name": "nhs.uk",
+    "host": "nhs.uk",
+    "language": "en",
+    "title": "Good old fish and chips",
+    "ingredients": [
+      "4 potatoes, scrubbed, each cut into 8 wedges",
+      "1 tablespoon vegetable oil",
+      "75g dried white or wholemeal breadcrumbs",
+      "1 egg, beaten with 2 tbsp cold water",
+      "4 fillets skinless white fish, like haddock, cod or pollock",
+      "300g mushy peas",
+      "1 pinch ground black pepper (optional)"
+    ],
+    "yields": "4 servings",
+    "description": "Make your own healthier version of fish and chips at home!",
+    "total_time": 50,
+    "prep_time": 10,
+    "cook_time": 40
+  },
+  "panelinha_2": {
+    "author": "Panelinha",
+    "canonical_url": "https://panelinha.com.br/receita/arroz-sirio-com-frango",
+    "site_name": "Panelinha - Receitas que funcionam",
+    "host": "panelinha.com.br",
+    "language": "pt-br",
+    "title": "Arroz sírio com frango",
+    "ingredients": [
+      "2 bifes de filé de peito de frango (cerca de 240 g)",
+      "⅓ de xícara (chá) de arroz",
+      "⅔ de xícara (chá) de lentilha",
+      "1 cebola",
+      "1 dente de alho",
+      "2 xícaras (chá) de água",
+      "1½ colher (sopa) de azeite",
+      "½ colher (chá) de pimenta síria",
+      "1 colher (chá) de sal",
+      "1 pitada de açúcar",
+      "¼ de xícara (chá) de nozes picadas",
+      "⅓ de xícara (chá) de iogurte natural"
+    ],
+    "yields": "2 servings",
+    "description": "Nesta versão com frango, o tradicional e perfumado arroz com lentilhas libanês se transforma numa refeição completa. E o melhor, feito numa panela só!",
+    "total_time": null
+  },
+  "usdamyplate_2": {
+    "author": "MyPlate",
+    "canonical_url": "https://www.myplate.gov/recipes/asparagus-mandarin-orange-chicken-and-rice",
+    "site_name": "MyPlate",
+    "host": "myplate.gov",
+    "language": "en",
+    "title": "Asparagus, Mandarin Orange, Chicken, and Rice",
+    "ingredients": [
+      "2 tablespoons extra virgin olive oil",
+      "2 tablespoons rice vinegar",
+      "3 tablespoons mandarin orange juice (reserved from oranges)",
+      "1 tablespoon soy sauce, reduced sodium",
+      "3 1/3 cups fresh asparagus (trimmed)",
+      "2 cans 11 oz cans mandarin oranges (drained, reserve juice)",
+      "12 ounces cooked chicken breast (cut into chunks)",
+      "3 cups cooked instant brown rice"
+    ],
+    "yields": "4 servings",
+    "description": "Fresh California asparagus, mandarin oranges, chicken, and brown rice make perfect compliments in this Asian-influenced salad.",
+    "prep_time": 30
+  }
+}
